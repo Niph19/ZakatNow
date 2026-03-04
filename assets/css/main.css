@@ -889,12 +889,30 @@ section,
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  padding: 120px 0 80px;
+  padding: 80px 0 80px;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--background-color) 0%, color-mix(in srgb, var(--accent-color), transparent 95%) 100%);
 }
 
+#img-hero {
+  margin: 0px 0px 20px;
+  border-radius: 15px;
+}
+
+#font_stat_title {
+  font-size: 18px;
+}
+
+#font_stat_value {
+  font-size: 13px
+}
+
+#table {
+  max-width: 1300px;
+  margin:auto;
+  margin-top: 30px;
+}
 .hero::before {
   content: "";
   position: absolute;
@@ -6382,6 +6400,3 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
