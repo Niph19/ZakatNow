@@ -1,7 +1,7 @@
 <ul class="navbar-nav text-light sidebar sidebar-dark accordion" id="color-asli">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fa-solid fa-star-and-crescent"></i>
                 </div>
@@ -13,7 +13,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="admin.php">
+                <a class="nav-link" href="index.php">
                     <i class="fa-solid fa-chart-bar"></i>
                     <span>Dashboard</span></a>
             </li>

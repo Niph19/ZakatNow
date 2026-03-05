@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     mysqli_query($koneksi, $sql);   
     
-    header("Location: admin.php");
+    header("Location: index.php");
     exit;
     }
 
