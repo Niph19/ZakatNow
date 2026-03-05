@@ -174,6 +174,16 @@ include 'config.php';
                         </div>
                     </div>
 
+                    <footer class="footer-copyright">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <p>&copy; 2026 <b>Hanif El Hakim</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+
 
 
     </main>

@@ -6398,5 +6398,61 @@ section,
 }
 
 /*--------------------------------------------------------------
+# Footer Copyright Section
+--------------------------------------------------------------*/
+.footer-copyright {
+  background: linear-gradient(135deg, #2f3e52 0%, #3d4f63 100%);
+  padding: 40px 0;
+  margin-top: 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-copyright .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-copyright p {
+  margin: 0;
+  color: #e0e7ff;
+  font-size: 15px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.footer-copyright p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.footer-copyright p i {
+  color: #ef4444;
+  margin: 0 4px;
+}
+
+@media (max-width: 768px) {
+  .footer-copyright {
+    padding: 30px 0;
+    margin-top: 60px;
+  }
+
+  .footer-copyright p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-copyright {
+    padding: 24px 0;
+    margin-top: 48px;
+  }
+
+  .footer-copyright p {
+    font-size: 13px;
+  }
+}
+
+/*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/

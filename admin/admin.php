@@ -241,7 +241,7 @@ include 'sidebar.php';
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; ZakatNow 2026</span>
+                        <span>Copyright &copy; 2026 <b>Hanif El Hakim</b></span>
                     </div>
                 </div>
             </footer>
