@@ -20,10 +20,10 @@ include '../config.php';
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+            <link href="../assets_admin/css/color.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../assets_admin/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../assets_admin/css/color.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="../assets_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -35,9 +35,50 @@ include '../config.php';
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-<?php
-include 'sidebar.php';
-?>
+        <!-- Sidebar -->
+        <ul class="navbar-nav text-light sidebar sidebar-dark accordion" id="color-asli">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fa-solid fa-star-and-crescent"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">ZakatNow</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="admin.php">
+                    <i class="fa-solid fa-chart-bar"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Tambahan
+            </div>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="tambah.php">
+                    <i class="fa-regular fa-square-plus"></i>
+                    <span>Tambah Data</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="tables.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tabel Data</span></a>
+            </li>
+        </ul>
+        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -46,16 +87,12 @@ include 'sidebar.php';
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="    vbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-
-
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -64,105 +101,13 @@ include 'sidebar.php';
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard Admin Zakat</h1>
-                    </div>
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard Admin Zakat</h1>                    </div>
 
                     <!-- Content Row -->
                     <div class="row">
-
-                        <!-- Jumlah Pemberi -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Jumlah Pemberi Zakat</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php 
-                                            $query = mysqli_query($koneksi, "SELECT COUNT(nama_pemberi) AS total_pemberi_zakat FROM tbl_zakat;");
-                                            echo mysqli_fetch_assoc($query)['total_pemberi_zakat'] . " Orang";
-                                            ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa-solid fa-users fa-2x text-gray-500"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Jumlah Uang -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Total Zakat Mal</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
-                                            $query = mysqli_query($koneksi, "SELECT SUM(jumlah_uang) as total_uang from tbl_zakat"); $total_uang = mysqli_fetch_assoc($query);
-                                            echo "Rp " . number_format($total_uang['total_uang'], 0, ',', '.');
-                                            ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa-solid fa-rupiah-sign fa-2x text-gray-500"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Jumlah Beras -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Zakat Fitrah
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php
-                                            $query = mysqli_query($koneksi, "SELECT SUM(jumlah_beras) as total_beras from tbl_zakat"); $total_beras = mysqli_fetch_assoc($query);
-                                            echo number_format($total_beras['total_beras'], 0, ',', '.') . " kg";
-                                            ?></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa-solid fa-bowl-rice fa-2x text-gray-500"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Total Pembaca Website -->
-                        <a href="../index.php" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
-                            <div class="card shadow h-100 py-2" id="color-asli">
-                                <div class="card-body" id="card-home">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-lg font-weight-bold text-light text-uppercase mb-0 mt-2">
-                                                Halaman Utama</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa-solid fa-star-and-crescent fa-2x text-light mt-1"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Content Row -->
-
-                    <div class="row">
-                                        <!-- Page Heading -->
-                    <a href="tambah.php" class="btn btn-primary my-3 border-0" id="color-asli">Tambahkan Data Zakat</a>
 
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-4 mx-auto">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold" id="color-text">Laporan Real-Time Penerimaan Zakat 2026</h6>
                         </div>
@@ -178,7 +123,6 @@ include 'sidebar.php';
                                             <th class="text-secondary text-nowrap" style="min-width: 100px;">Metode</th>
                                             <th class="text-secondary text-nowrap" style="min-width: 100px;">Tanggal</th>
                                             <th class="text-secondary text-nowrap" style="min-width: 200px;">Keterangan</th>
-                                            <th class="text-secondary text-nowrap" style="min-width: 120px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -202,7 +146,6 @@ include 'sidebar.php';
                                             <th class="text-secondary text-nowrap" style="min-width: 100px;">Metode</th>
                                             <th class="text-secondary text-nowrap" style="min-width: 100px;">Tanggal</th>
                                             <th class="text-secondary text-nowrap" style="min-width: 200px;">Keterangan</th>
-                                            <th class="text-secondary text-nowrap" style="min-width: 120px;">Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <?php
@@ -219,10 +162,6 @@ include 'sidebar.php';
                                             <td><?= $data['metode']?></td>
                                             <td><?= $data['tanggal']?></td>
                                             <td class="text-nowrap"><?= $data['keterangan']?></td>
-                                            <td class="text-nowrap">
-                                                <a href="edit.php?id=<?= $data['id_zakat']; ?>" class="btn btn-primary btn-sm align-middle border-0" id="color-asli">Ubah</a>
-                                                <a href="hapus.php?id=<?= $data['id_zakat']; ?>" class="btn btn-danger btn-sm align-middle">Hapus</a>
-                                            </td>
                                         </tr>
                         <?php endforeach ?>
                                     </tbody>

@@ -17,8 +17,7 @@ include 'config.php';
     <link href="assets/img/fav_zakat.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css";
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link
@@ -84,7 +83,10 @@ include 'config.php';
                                     <i class="fa-solid fa-rupiah-sign"></i>
                                 </div>
                                 <div class="stat-info">
-                                    <span class="stat-value" id="font_stat_title">Rp 750 Juta+</span>
+                                    <span class="stat-value" id="font_stat_title"><?php
+                                            $query = mysqli_query($koneksi, "SELECT SUM(jumlah_uang) as total_uang from tbl_zakat"); $total_uang = mysqli_fetch_assoc($query);
+                                            echo "Rp " . number_format($total_uang['total_uang'], 0, ',', '.');
+                                            ?></span>
                                     <span class="stat-title" id="font_stat_value">Total Zakat Mal Terkelola</span>
                                 </div>
                             </div>
@@ -94,7 +96,10 @@ include 'config.php';
                                     <i class="fa-solid fa-bowl-rice"></i>
                                 </div>
                                 <div class="stat-info">
-                                    <span class="stat-value" id="font_stat_title">2.500+</span>
+                                    <span class="stat-value" id="font_stat_title"><?php
+                                            $query = mysqli_query($koneksi, "SELECT SUM(jumlah_beras) as total_beras from tbl_zakat"); $total_beras = mysqli_fetch_assoc($query);
+                                            echo number_format($total_beras['total_beras'], 0, ',', '.') . " kg";
+                                            ?></span>
                                     <span class="stat-title" id="font_stat_value">Paket Beras Fitrah</span>
                                 </div>
                             </div>
@@ -129,10 +134,19 @@ include 'config.php';
                                     <tfoot>
                                         <tr>
                                             <th class="text-secondary">Nomor</th>
-                                            <th class="text-secondary">Nama</th>
+                                            <th class="text-secondary"><?php 
+                                            $query = mysqli_query($koneksi, "SELECT COUNT(nama_pemberi) AS total_pemberi_zakat FROM tbl_zakat;");
+                                            echo mysqli_fetch_assoc($query)['total_pemberi_zakat'] . " Orang";
+                                            ?></th>
                                             <th class="text-secondary">Jenis Zakat</th>
-                                            <th class="text-secondary">Jumlah Uang</th>
-                                            <th class="text-secondary">Jumlah Beras</th>
+                                            <th class="text-secondary"><?php
+                                            $query = mysqli_query($koneksi, "SELECT SUM(jumlah_uang) as total_uang from tbl_zakat"); $total_uang = mysqli_fetch_assoc($query);
+                                            echo "Rp " . number_format($total_uang['total_uang'], 0, ',', '.');
+                                            ?></th>
+                                            <th class="text-secondary"><?php
+                                            $query = mysqli_query($koneksi, "SELECT SUM(jumlah_beras) as total_beras from tbl_zakat"); $total_beras = mysqli_fetch_assoc($query);
+                                            echo number_format($total_beras['total_beras'], 0, ',', '.') . " kg";
+                                            ?></th>
                                             <th class="text-secondary">Metode</th>
                                             <th class="text-secondary">Tanggal</th>
                                             <th class="text-secondary">Keterangan</th>

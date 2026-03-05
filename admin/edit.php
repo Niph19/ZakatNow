@@ -24,18 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $tanggal = $_POST['tanggal'];
             $keterangan = $_POST['keterangan'];
 
-    $sql = "UPDATE tbl_zakat SET ='$Username', Password='$Password', Nama='$Nama', Alamat='$Alamat' WHERE id_admin='$id'";
+    $sql = "UPDATE tbl_zakat SET nama_pemberi='$nama', jenis_zakat='$jenis', jumlah_uang='$uang', jumlah_beras='$beras', metode='$metode', tanggal='$tanggal', keterangan='$keterangan' WHERE id_zakat='$id'";
 
-    }
-
+    
     mysqli_query($koneksi, $sql);   
-
+    
     header("Location: admin.php");
     exit;
-}
+    }
 
 include '../config.php';
-include 'sidebar.php';
 ?>
 <head>
 
@@ -46,6 +44,7 @@ include 'sidebar.php';
     <meta name="author" content="">
 
     <title>Admin – ZakatNow</title>
+    <link href="../assets_admin/img/ZakatNowAdmin.png" rel="icon">
 
     <!-- Custom fonts for this template -->
     <link href="../assets_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -62,16 +61,23 @@ include 'sidebar.php';
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<div class="container">
+<div class="container mt-5">
         <h3 class="fw-bolder mb-3">Ubah Data Zakat</h3>
         <form method="POST">
             <label for="nama_pemberi">Nama Pemberi</label>
             <input type="text" id="nama_pemberi" name="nama_pemberi" placeholder="Nama Pemberi" value="<?= $datanow['nama_pemberi']?>" required>
 
             <label for="jenis_zakat">Jenis Zakat</label><br>
-            <select id="jenis_zakat" name="jenis" value="<?= $datanow['jenis']?>" required>
-                <option>Zakat Mal</option>
-                <option>Zakat Fitrah</option>
+            <select id="jenis_zakat" name="jenis" required>
+                <option value="Zakat Mal" <?= ($datanow['jenis_zakat'] === 'Zakat Mal') ? 'selected' : '' ?>>Zakat Mal</option>
+
+
+
+
+                <option value="Zakat Fitrah" <?= ($datanow['jenis_zakat'] === 'Zakat Fitrah') ? 'selected' : '' ?>>Zakat Fitrah</option>
+
+
+
             </select><br>
 
             <label for="jumlah_uang">Jumlah Uang</label><br>
@@ -83,9 +89,9 @@ include 'sidebar.php';
             <br>
 
             <label for="metode">Metode</label><br>
-            <select id="metode" name="metode" value="<?= $datanow['metode']?>" required>
-                <option value="Transfer">Transfer</option>
-                <option value="Langsung">Langsung</option>
+            <select id="metode" name="metode" required>
+                <option value="Transfer" <?= ($datanow['metode'] === 'Transfer') ? 'selected' : '' ?>>Transfer</option>
+                <option value="Langsung" <?= ($datanow['metode'] === 'Langsung') ? 'selected' : '' ?>>Langsung</option>
             </select>
             <br>
 
